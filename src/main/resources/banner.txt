@@ -1,0 +1,7 @@
+  __  __ ___ _  _ ___ ___   _   _  _ _  __
+ |  \/  |_ _| \| |_ _| _ ) /_\ | \| | |/ /
+ | |\/| || || .` || || _ \/ _ \| .` | ' < 
+ |_|  |_|___|_|\_|___|___/_/ \_\_|\_|_|\_\
+                                          
+ L'application démarre avec max.account.age qui vaut : ${max.account.age}
+ L'application démarre sur le port ${server.port}
