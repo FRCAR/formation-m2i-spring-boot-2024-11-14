@@ -3,6 +3,8 @@ package com.bigcorp.minibank.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bigcorp.minibank.dao.BankDao;
 import com.bigcorp.minibank.model.Bank;
 
-import jakarta.persistence.EntityManager;
 
 @Service
 public class BankService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(BankService.class);
 	
 	@Autowired
 	private BankDao bankDao;
@@ -31,6 +34,7 @@ public class BankService {
 
 	@Transactional
 	public Bank saveBank(Bank bank) {
+		LOGGER.info("Sauvegarde de la banque");
 		System.out.println("Je sauvegarde la banque : ");
 		System.out.println(" id : " + bank.getId());
 		System.out.println(" name : " + bank.getName());

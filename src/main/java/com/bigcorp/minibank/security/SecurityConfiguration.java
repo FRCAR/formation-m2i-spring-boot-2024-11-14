@@ -15,11 +15,11 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests(requests -> requests
-				.requestMatchers("/", "/login", "/html/salut").permitAll()
+				.requestMatchers("/", "/login", "/html/salut").hasRole("MANAGER")
 				.requestMatchers("/rest/banks/**").permitAll()
 				.anyRequest().authenticated()
 			)
-			.csrf(csrfCustomizer -> csrfCustomizer.ignoringRequestMatchers("/rest-ws/**"))
+			.csrf(csrfCustomizer -> csrfCustomizer.ignoringRequestMatchers("/rest/**"))
 			.formLogin(form -> form
 				.loginPage("/login")
 				.permitAll()
