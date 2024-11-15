@@ -1,12 +1,16 @@
 package com.bigcorp.minibank.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bigcorp.minibank.dao.BankDao;
 import com.bigcorp.minibank.model.Bank;
+
+import jakarta.persistence.EntityManager;
 
 @Service
 public class BankService {
@@ -19,16 +23,22 @@ public class BankService {
 		return bankDao.findById(id);
 	}
 
+	@Transactional
 	public void deleteBank(Long id) {
 		System.out.println("Appel de BankService.deleteBank() avec l'id : " + id);
 		bankDao.deleteById(id);
 	}
 
+	@Transactional
 	public Bank saveBank(Bank bank) {
 		System.out.println("Je sauvegarde la banque : ");
 		System.out.println(" id : " + bank.getId());
 		System.out.println(" name : " + bank.getName());
 		return bankDao.save(bank);
+	}
+	
+	public List<Bank> findByName(String name){
+		return bankDao.findByNameContainingIgnoringCase(name);
 	}
 
 }
