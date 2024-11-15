@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bigcorp.minibank.exception.MonExceptionMetier;
 import com.bigcorp.minibank.service.BankService;
 
 @RestController
@@ -22,6 +23,7 @@ public class BankRestController {
 	public Bank getBank(@PathVariable("id") Long id) {
 		System.out.println("Appel de BankRestController.getBank() avec l'id : " + id);
 		return bankService.getBank(id);
+		
 	}
 
 	@DeleteMapping(path = "/{id}")
