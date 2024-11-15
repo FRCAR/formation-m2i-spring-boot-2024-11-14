@@ -1,8 +1,17 @@
-package com.bigcorp.minibank.controller.rest;
+package com.bigcorp.minibank.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Bank {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
+	
 	private String name;
 
 	public Long getId() {

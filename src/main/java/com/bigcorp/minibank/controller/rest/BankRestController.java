@@ -1,5 +1,7 @@
 package com.bigcorp.minibank.controller.rest;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bigcorp.minibank.exception.MonExceptionMetier;
+import com.bigcorp.minibank.model.Bank;
 import com.bigcorp.minibank.service.BankService;
 
 @RestController
@@ -20,7 +22,7 @@ public class BankRestController {
 	private BankService bankService;
 
 	@GetMapping(path = "/{id}")
-	public Bank getBank(@PathVariable("id") Long id) {
+	public Optional<Bank> getBank(@PathVariable("id") Long id) {
 		System.out.println("Appel de BankRestController.getBank() avec l'id : " + id);
 		return bankService.getBank(id);
 		
